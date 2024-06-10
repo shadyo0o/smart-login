@@ -1,0 +1,61 @@
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+h2{
+    font-family: "Pacifico", cursive;
+    transition: all 0.5s;
+}
+
+h2:hover{
+    letter-spacing: 4px;
+    scale: 1.1;
+}
+
+.form_content{
+    background-image: url(../img.jpg);
+    background-position: center center;
+    background-size: cover;
+    height: 100vh;
+    
+}
+.inner{
+    box-shadow: 0px 0px 5px 6px blueviolet;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(1.25rem);
+}
+
+
+
+#login a{
+    text-decoration: none;
+    color: white;
+}
+#login a:hover{
+    text-decoration:underline;
+    color: rgb(197, 159, 233);
+}
+i{
+    color: white;
+    position: absolute;
+    top: 50%;
+    right: 40px;
+    transform: translate(0,-50%);
+}
+#login .form-floating label::after{
+    background-color:transparent;
+}
+
+#login .form-floating input:focus{
+    box-shadow: 2px 2px 3px 4px blueviolet;
+    scale: 1.1;
+}
+
+
+.inner2{
+    box-shadow: 0px 0px 5px 6px blueviolet;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(1.25rem);
+}
