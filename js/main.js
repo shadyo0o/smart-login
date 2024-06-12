@@ -5,17 +5,17 @@ var acceptInput =document.getElementById("accept")
 var nameInput=document.getElementById("name")
 var emailInput=document.getElementById("email");
 var passInput=document.getElementById("pass");
-var supInput=document.getElementById("btnsup")
-var putInput=document.getElementById("put")
+var emailError=document.getElementById("emailError");
+var emailError1=document.getElementById("emailError1");
 
 
 var regex={
     name:{
-        value:/^[a-z]{2,8}$/i,
+        value:/^[a-z]{1,}$/i,
         Status:false,
     },
     email:{
-value:/^[a-zA-Z]{1,}\.(gmail|yahoo)\.com$/,
+value:/^.{1,15}@(gmail|yahoo)\.com$/,
 Status:false
     },
     pass:{
@@ -42,9 +42,10 @@ function validateName(){
 }
 
 
-
 function validateEmail(){
-    if(regex.email.value.test(emailInput.value) ){
+    if(regex.email.value.test(emailInput.value)){
+        localStorage.setItem("email",JSON.stringify(emailInput.value))
+        emailContainer.push(JSON.parse(localStorage.getItem("email")))
         regex.email.status=true
         emailInput.classList.remove("is-invalid")
         emailInput.classList.add("is-valid")
@@ -57,6 +58,8 @@ function validateEmail(){
             return false
             }
 }
+
+
 
 function validatePass()
 {
@@ -76,9 +79,9 @@ function validatePass()
 var container=[];
 
 function signup(){
+    
 
     if(validateName() && validateEmail() && validatePass()){
-
 
         container.push({
             name:nameInput.value,
@@ -88,15 +91,29 @@ function signup(){
     console.log(container);
     localStorage.setItem("login" ,JSON.stringify(container) )
     acceptInput.classList.remove("d-none")
+warnInput.classList.add("d-none")
 
-        }else{
+loginPage()
+
+        }else if (validateEmail()!=true){
+            emailError.classList.remove("d-none")
+            warnInput.classList.add("d-none")
+        }
+        else{
             warnInput.classList.remove("d-none")
             }
-
 }
+
+function loginPage(){
+    window.location.href="index.html"
+}
+
+
 // *************************************************************
 
 // ************************ page login*************************
+
+
 
 var email1input=document.getElementById("email1");
 var pass1input=document.getElementById("pass1");
@@ -116,7 +133,10 @@ function login(){
                 accept()
                 return 
             }else if(email1input.value=="" || pass1input.value==""){
-                requiredinput.classList.remove("d-none");   
+                requiredinput.classList.remove("d-none");
+                acceptInput.classList.add("d-none")
+                warnInput.classList.add("d-none")
+
             }
             else{
                 warnInput.classList.remove("d-none")
@@ -136,6 +156,7 @@ function accept()
 {
     window.location.href="page3.html";
 }
+
 
 
 document.getElementById("userName").innerHTML= `Welcome ${JSON.parse(localStorage.getItem("name"))}`;
