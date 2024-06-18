@@ -41,6 +41,7 @@ function validateName(){
             }
 }
 
+var emailContainer=[]
 
 function validateEmail(){
     if(regex.email.value.test(emailInput.value)){
